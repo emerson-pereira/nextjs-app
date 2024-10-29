@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
+import { FormProvider } from "./contexts/formContext";
 
 const robotoRegular = localFont({
   src: "./fonts/Roboto-Regular.woff",
@@ -16,7 +17,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${robotoRegular.variable}`}>
-        {children}
+        <FormProvider>
+          {children}
+        </FormProvider>
       </body>
     </html>
   );
