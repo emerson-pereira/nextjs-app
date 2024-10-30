@@ -13,10 +13,10 @@ export default function NewAvisoLayout({ children }) {
             <div>
               <h3>Opção 10</h3>
               <p className="text-primary">* Campos de preenchimento obrigatório</p>
-              {children}
             </div>
             <StepNav />
           </div>
+          {children}
         </div>
       </div>
     </div>
