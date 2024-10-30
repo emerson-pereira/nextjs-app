@@ -5,8 +5,8 @@ import Image from "next/image";
 
 export default function AvisoHeader({ className }) {
   return (
-    <div className={`d-flex flex-row justify-content-between ${className}`}>
-      <div className="d-flex flex-row align-items-center">
+    <div className={`d-flex justify-content-between ${className}`}>
+      <div className="d-flex align-items-center">
         <Link className="navbar-brand me-4" href="/avisos">
           <Image
             className="me-2"
@@ -18,12 +18,12 @@ export default function AvisoHeader({ className }) {
         </Link>
         <div>
           <h2 className="fs-6 text-uppercase">Avisos</h2>
-          <div className="d-flex flex-row align-items-center">
+          <div className="d-flex align-items-center">
             <h3 className="text-uppercase m-0 ">Novo Aviso</h3>
           </div>
         </div>
         <div>
-          <div className="d-flex flex-row align-items-center ms-5">
+          <div className="ms-5">
             <Image
               className="me-2"
               src="/pencil.svg"

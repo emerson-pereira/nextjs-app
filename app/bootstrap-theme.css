@@ -1,5 +1,9 @@
 :root {
   --bs-body-color: var(--black-1);
   --bs-light-rgb: var(--text-light-rgb);
-  --bs-primary-rgb: var(--blue-rgb);
+  --bs-secondary-rgb: var(--gray-2-rgb);
+}
+
+.btn-secondary {
+  --bs-btn-bg: var(--blue-7);
 }
