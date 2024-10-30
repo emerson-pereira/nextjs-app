@@ -3,9 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export default function AvisoHeader() {
+export default function AvisoHeader({ className }) {
   return (
-    <div className="d-flex flex-row justify-content-between border-bottom p-4">
+    <div className={`d-flex flex-row justify-content-between ${className}`}>
       <div className="d-flex flex-row align-items-center">
         <Link className="navbar-brand me-4" href="/avisos">
           <Image
