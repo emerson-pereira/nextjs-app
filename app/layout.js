@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./bootstrap-theme.css";
 import "./globals.css";
 import { FormProvider } from "./contexts/formContext";
 
