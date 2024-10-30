@@ -1,4 +1,5 @@
 :root {
-  --bs-light-rgb: var(--text-light-rgb);
   --bs-body-color: var(--black-1);
+  --bs-light-rgb: var(--text-light-rgb);
+  --bs-primary-rgb: var(--blue-rgb);
 }

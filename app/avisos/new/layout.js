@@ -1,14 +1,16 @@
+import AvisoHeader from '@/components/AvisoHeader'
+
 export default function NewAvisoLayout({ children }) {
   return (
     <>
-      <div>
-        Header
-      </div>
-      <div>
-        Side Nav
-      </div>
-      <div>
-        {children}
+      <AvisoHeader />
+      <div className="d-flex flex-row">
+        <div>
+          Side Nav
+        </div>
+        <div>
+          {children}
+        </div>
       </div>
     </>
   );
