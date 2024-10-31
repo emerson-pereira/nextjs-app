@@ -2,8 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function AvisoSideNav({ className }) {
-  const steps = new Array(12).fill();
-  steps[9] = { active: true };
+  const steps = new Array(12).fill().map((_, itemIndex) => ({
+    id: `item-${itemIndex}`
+  }));
+  steps[9].active = true;
 
   return (
     <ul className={`nav flex-column py-2 ${className}`}>
@@ -17,13 +19,13 @@ export default function AvisoSideNav({ className }) {
             px-4
             border-start
             border-4
-            ${step?.active ? 'border-primary' : 'border-white'}
+            ${step.active ? 'border-primary' : 'border-white'}
           `}
-          key={step}
-          style={{ background: step?.active ? 'rgba(236, 244, 246, 0.4)' : '' }}
+          key={step.id}
+          style={{ background: step.active ? 'rgba(236, 244, 246, 0.4)' : '' }}
         >
           <Link
-            className={`navbar-brand me-4 ${step?.active && 'text-primary'}`}
+            className={`navbar-brand me-4 ${step.active && 'text-primary'}`}
             href="/avisos"
           >
             Opção {stepIndex + 1}

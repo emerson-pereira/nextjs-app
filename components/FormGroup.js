@@ -10,7 +10,7 @@ export default function FormGroup({
       <h4 className="text-secondary">{title} {required && "*"}</h4>
       {description && <p>{description}</p>}
 
-      <div class="form-group">
+      <div className="form-group">
         {children}
       </div>
     </div>
