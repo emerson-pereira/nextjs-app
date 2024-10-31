@@ -84,6 +84,7 @@ export default function FormStep10() {
             className="mt-4"
             headers={['NUTS II', 'NUTS III', 'Concelho', 'Taxa (%)']}
             rows={form.feesPerLocation}
+            deleteAction
           />
         )}
       </FormGroup>
