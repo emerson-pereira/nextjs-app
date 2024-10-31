@@ -51,16 +51,16 @@ function formReducer(form, action) {
     case 'addedFeePerLocation': {
       return {
         ...form,
-        feePerLocation: [
-          ...form.feePerLocation,
-          action.feePerLocation
+        feesPerLocation: [
+          ...form.feesPerLocation,
+          action.feesPerLocation
         ]
       }
     }
     case 'deletedFeePerLocation': {
       return {
         ...form,
-        feePerLocation: form.feePerLocation.filter(fpl => fpl !== action.feePerLocation)
+        feesPerLocation: form.feesPerLocation.filter(fpl => fpl !== action.feesPerLocation)
       }
     }
     default: {
@@ -73,5 +73,8 @@ const initialForm = {
   feeType: '',
   count: false,
   addFeePerLocation: false,
-  feePerLocation: []
+  feesPerLocation: [
+    ['Norte', 'Ave', 'Fafe', '25%'],
+    ['Norte', 'Área Metropolitana do Porto', 'Matosinhos', '75%']
+  ]
 };

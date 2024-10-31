@@ -1,9 +1,11 @@
 "use client"
 
 import { useForm, useFormDispatch } from "@/app/contexts/formContext";
+import DataTable from "@/components/DataTable";
 import Dropdown from "@/components/Dropdown";
 import FormGroup from "@/components/FormGroup";
 import RadioButton from "@/components/RadioButton";
+import ToggleButton from "@/components/ToggleButton";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -49,29 +51,22 @@ export default function FormStep10() {
       </FormGroup>
       <FormGroup title="Taxa" required className="p-4 bg-white">
         <div className="d-flex justify-content-between align-items-center">
-          <div className="form-check-reverse form-switch d-flex gap-2">
-            <label
-              className="form-check-label"
-              htmlFor="flexSwitchCheckChecked"
-            >
-              Adicionar taxa por localização
-            </label>
-            <input
-              className="form-check-input"
-              type="checkbox"
-              role="switch"
-              id="flexSwitchCheckChecked"
-              onChange={(event) => taskDispatch({
-                type: 'toggledAddFeePerLocation',
-                addFeePerLocation: event.target.checked,
-              })}
-            />
-          </div>
+          <ToggleButton
+            title="Adicionar taxa por localização"
+            id="toggle-add-fee"
+            onChange={(event) => taskDispatch({
+              type: 'toggledAddFeePerLocation',
+              addFeePerLocation: event.target.checked,
+            })}
+          />
           {form.addFeePerLocation && (
             <button
               type="button"
               className="btn btn-outline-primary d-flex align-items-center"
-              onClick={() => router.push('#')}
+              onClick={() => taskDispatch({
+                type: 'addedFeePerLocation',
+                feesPerLocation: ['Norte', 'Ave', 'Fafe', Math.floor(Math.random() * 101) + '%']
+              })}
             >
               <Image
                 className="me-2"
@@ -84,7 +79,13 @@ export default function FormStep10() {
             </button>
           )}
         </div>
-
+        {form.addFeePerLocation && (
+          <DataTable
+            className="mt-4"
+            headers={['NUTS II', 'NUTS III', 'Concelho', 'Taxa (%)']}
+            rows={form.feesPerLocation}
+          />
+        )}
       </FormGroup>
     </div>
   );
