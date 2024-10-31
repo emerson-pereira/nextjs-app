@@ -24,7 +24,7 @@ export function useForm() {
   return useContext(FormContext);
 }
 
-export function useTasksDispatch() {
+export function useFormDispatch() {
   return useContext(FormDispatchContext);
 }
 
@@ -39,8 +39,14 @@ function formReducer(form, action) {
     case 'toggledCount': {
       return {
         ...form,
-        count: !action.count
+        count: action.count
       };
+    }
+    case 'toggledAddFeePerLocation': {
+      return {
+        ...form,
+        addFeePerLocation: action.addFeePerLocation
+      }
     }
     case 'addedFeePerLocation': {
       return {
@@ -66,5 +72,6 @@ function formReducer(form, action) {
 const initialForm = {
   feeType: '',
   count: false,
+  addFeePerLocation: false,
   feePerLocation: []
 };

@@ -1,9 +1,10 @@
 "use client"
 
-import { useTasksDispatch } from "@/app/contexts/formContext";
+import { useForm, useFormDispatch } from "@/app/contexts/formContext";
 import Dropdown from "@/components/Dropdown";
 import FormGroup from "@/components/FormGroup";
 import RadioButton from "@/components/RadioButton";
+import Image from "next/image";
 import { useState } from "react";
 
 export default function FormStep10() {
@@ -12,7 +13,8 @@ export default function FormStep10() {
     { title: 'Item 2', link: '#' },
   ];
   const [feeTypeTitle, setFeeTypeTitle] = useState('');
-  const taskDispatch = useTasksDispatch();
+  const form = useForm();
+  const taskDispatch = useFormDispatch();
 
   return (
     <div className="d-flex flex-column gap-4">
@@ -46,8 +48,43 @@ export default function FormStep10() {
         />
       </FormGroup>
       <FormGroup title="Taxa" required className="p-4 bg-white">
-        <p>Adicionar taxa por localização, toggle / Adicionar Taxa</p>
-        <p>data table</p>
+        <div className="d-flex justify-content-between align-items-center">
+          <div className="form-check-reverse form-switch d-flex gap-2">
+            <label
+              className="form-check-label"
+              htmlFor="flexSwitchCheckChecked"
+            >
+              Adicionar taxa por localização
+            </label>
+            <input
+              className="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="flexSwitchCheckChecked"
+              onChange={(event) => taskDispatch({
+                type: 'toggledAddFeePerLocation',
+                addFeePerLocation: event.target.checked,
+              })}
+            />
+          </div>
+          {form.addFeePerLocation && (
+            <button
+              type="button"
+              className="btn btn-outline-primary d-flex align-items-center"
+              onClick={() => router.push('#')}
+            >
+              <Image
+                className="me-2"
+                src="/plus-sign.svg"
+                width={20}
+                height={20}
+                alt="Save"
+              />
+              <span className="text-uppercase">Adicionar Taxa</span>
+            </button>
+          )}
+        </div>
+
       </FormGroup>
     </div>
   );
