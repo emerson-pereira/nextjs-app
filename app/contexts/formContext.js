@@ -57,10 +57,18 @@ function formReducer(form, action) {
         ]
       }
     }
-    case 'deletedFeePerLocation': {
+    case 'deletedFeesPerLocation': {
       return {
         ...form,
-        feesPerLocation: form.feesPerLocation.filter(fpl => fpl !== action.feesPerLocation)
+        feesPerLocation: form.feesPerLocation.filter(
+          (_, fplIndex) => !action.itemIndexes.includes(fplIndex)
+        )
+      };
+    }
+    case 'deletedAllFeesPerLocation': {
+      return {
+        ...form,
+        feesPerLocation: []
       }
     }
     default: {

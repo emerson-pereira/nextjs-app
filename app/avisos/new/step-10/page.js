@@ -15,6 +15,8 @@ export default function FormStep10() {
     { title: 'Item 2', link: '#' },
   ];
   const [feeTypeTitle, setFeeTypeTitle] = useState('');
+  const [selectAll, setSelectAll] = useState(false);
+  const [selectedIndexes, setSelectedIndex] = useState([]);
   const form = useForm();
   const taskDispatch = useFormDispatch();
 
@@ -79,14 +81,67 @@ export default function FormStep10() {
             </button>
           )}
         </div>
+
         {form.addFeePerLocation && (
           <DataTable
             className="mt-4"
             headers={['NUTS II', 'NUTS III', 'Concelho', 'Taxa (%)']}
             rows={form.feesPerLocation}
+            selectable
             deleteAction
+            onRowSelect={(rowIndex, value) => {
+              if (value) {
+                setSelectedIndex([...selectedIndexes, rowIndex]);
+              } else {
+                setSelectedIndex(selectedIndexes.filter((si) => si !== rowIndex));
+              }
+            }}
+            onRowSelectAll={(value) => setSelectAll(value)}
+            onRowDelete={(rowIndex) => {
+              // TODO: Fix memory leak: Create at mount, dispose at unmount
+              // TODO: check checkbox of target row
+              const bsOffcanvas = new bootstrap.Offcanvas('#offcanvasBottom')
+              bsOffcanvas.show();
+            }}
           />
         )}
+
+        <div
+          className="offcanvas offcanvas-bottom bg-body-tertiary "
+          tabIndex="-1"
+          id="offcanvasBottom"
+          aria-labelledby="offcanvasBottomLabel"
+          data-bs-backdrop="static"
+        >
+          <div className="offcanvas-header">
+            <button
+              type="button"
+              className="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div className="offcanvas-body small text-light">
+            <div className="d-flex justify-content-between">
+              <div>
+                {selectedIndexes.length} taxas selecionadas
+              </div>
+              <div className="d-flex gap-4">
+                <button type="button" className="btn btn-light text-uppercase">Cancelar</button>
+                <button
+                  type="button"
+                  className="btn btn-primary text-uppercase"
+                  onClick={() => {
+                    taskDispatch({
+                      type: 'deletedFeesPerLocation',
+                      itemIndexes: selectedIndexes
+                    });
+                  }}
+                >Eliminar</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </FormGroup>
     </div>
   );

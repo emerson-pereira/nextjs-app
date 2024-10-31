@@ -14,7 +14,7 @@ const robotoRegular = localFont({
 
 export default function RootLayout({ children }) {
   useEffect(() => {
-    require("bootstrap/dist/js/bootstrap.bundle.min.js")
+    window.bootstrap = require("bootstrap/dist/js/bootstrap.bundle.min.js")
   }, []);
 
   return (
@@ -24,6 +24,6 @@ export default function RootLayout({ children }) {
           {children}
         </FormProvider>
       </body>
-    </html>
+    </html >
   );
 }

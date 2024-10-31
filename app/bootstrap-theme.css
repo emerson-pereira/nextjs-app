@@ -2,6 +2,7 @@
   --bs-body-color: var(--black-1);
   --bs-light-rgb: var(--text-light-rgb);
   --bs-secondary-rgb: var(--gray-2-rgb);
+  --bs-tertiary-bg-rgb: var(--blue-1-rgb);
 }
 
 .btn-secondary {
