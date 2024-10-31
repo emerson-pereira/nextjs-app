@@ -1,4 +1,4 @@
-export default function Dropdown({ title, items, onClick }) {
+export default function Dropdown({ title, items, onChange }) {
   return (
     <div className="dropdown">
       <button
@@ -20,7 +20,7 @@ export default function Dropdown({ title, items, onClick }) {
             <a
               className="dropdown-item"
               href={item.link}
-              onClick={onClick}>
+              onClick={onChange}>
               {item.title}
             </a>
           </li>

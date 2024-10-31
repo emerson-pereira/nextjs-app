@@ -3,6 +3,7 @@
 import { useTasksDispatch } from "@/app/contexts/formContext";
 import Dropdown from "@/components/Dropdown";
 import FormGroup from "@/components/FormGroup";
+import RadioButton from "@/components/RadioButton";
 import { useState } from "react";
 
 export default function FormStep10() {
@@ -20,7 +21,7 @@ export default function FormStep10() {
         <Dropdown
           title={feeTypeTitle}
           items={feeTypes}
-          onClick={(event) => {
+          onChange={(event) => {
             setFeeTypeTitle(event.target.text);
             taskDispatch({
               type: 'addedFeeType',
@@ -30,7 +31,19 @@ export default function FormStep10() {
         />
       </FormGroup>
       <FormGroup title="Contar" required className="p-4 bg-white">
-        <p>yes/no radio</p>
+        <RadioButton
+          name="radio-count"
+          items={[
+            { id: 'radio-count-yes', title: 'Sim' },
+            { id: 'radio-count-no', title: 'Não' },
+          ]}
+          onChange={(radioId) => {
+            taskDispatch({
+              type: 'toggledCount',
+              count: radioId === 'radio-count-yes'
+            });
+          }}
+        />
       </FormGroup>
       <FormGroup title="Taxa" required className="p-4 bg-white">
         <p>Adicionar taxa por localização, toggle / Adicionar Taxa</p>

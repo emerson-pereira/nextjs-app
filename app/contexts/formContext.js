@@ -39,7 +39,7 @@ function formReducer(form, action) {
     case 'toggledCount': {
       return {
         ...form,
-        count: !count
+        count: !action.count
       };
     }
     case 'addedFeePerLocation': {
