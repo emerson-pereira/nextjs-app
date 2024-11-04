@@ -1,9 +1,12 @@
 "use client"
 
+import { useForm } from "@/app/contexts/formContext";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function AvisoHeader({ className }) {
+  const form = useForm();
+
   return (
     <div className={`d-flex justify-content-between ${className}`}>
       <div className="d-flex align-items-center">
@@ -58,7 +61,9 @@ export default function AvisoHeader({ className }) {
         <button
           type="button"
           className="btn btn-outline-primary d-flex align-items-center"
-          onClick={() => router.push('#')}
+          onClick={() => {
+            console.log('Form Data: ', form);
+          }}
         >
           <Image
             className="me-2"
