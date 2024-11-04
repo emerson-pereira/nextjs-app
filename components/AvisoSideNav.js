@@ -1,12 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function AvisoSideNav({ className }) {
-  const steps = new Array(12).fill().map((_, itemIndex) => ({
-    id: `item-${itemIndex}`
-  }));
-  steps[9].active = true;
-
+export default function AvisoSideNav({ className, steps }) {
   return (
     <ul className={`nav flex-column py-2 ${className}`}>
       {steps.map((step, stepIndex) => (

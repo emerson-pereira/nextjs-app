@@ -14,6 +14,8 @@ export default function StepNav() {
           />
         </Link>
       </button>
+      {/* TODO: Add icon for left chevron */}
+      {/* TODO: Add route nav back/forth */}
       <p className="text-secondary text-uppercase fw-bold my-0 me-2">Anterior</p>
       <p className="text-secondary text-uppercase fw-bold my-0 ms-2">Seguinte</p>
       <button type="button" className="btn btn-secondary border-0 rounded-5">

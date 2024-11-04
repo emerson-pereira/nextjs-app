@@ -7,7 +7,7 @@ import FormGroup from "@/components/FormGroup";
 import RadioButton from "@/components/RadioButton";
 import ToggleButton from "@/components/ToggleButton";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function FormStep10() {
   const feeTypes = [
@@ -19,6 +19,16 @@ export default function FormStep10() {
   const [selectedIndexes, setSelectedIndex] = useState([]);
   const form = useForm();
   const taskDispatch = useFormDispatch();
+  const [bsOffcanvas, setBsOffcanvas] = useState(null);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      const bsOffcanvas = new bootstrap.Offcanvas('#offcanvasBottom')
+      setBsOffcanvas(bsOffcanvas);
+    });
+
+    return () => clearTimeout(timeoutId);
+  }, []);
 
   return (
     <div className="d-flex flex-column gap-4">
@@ -98,9 +108,7 @@ export default function FormStep10() {
             }}
             onRowSelectAll={(value) => setSelectAll(value)}
             onRowDelete={(rowIndex) => {
-              // TODO: Fix memory leak: Create at mount, dispose at unmount
               // TODO: check checkbox of target row
-              const bsOffcanvas = new bootstrap.Offcanvas('#offcanvasBottom')
               bsOffcanvas.show();
             }}
           />
@@ -112,22 +120,20 @@ export default function FormStep10() {
           id="offcanvasBottom"
           aria-labelledby="offcanvasBottomLabel"
           data-bs-backdrop="static"
+          style={{ height: '15vh !important' }}
         >
-          <div className="offcanvas-header">
-            <button
-              type="button"
-              className="btn-close"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div className="offcanvas-body small text-light">
-            <div className="d-flex justify-content-between">
-              <div>
+          <div className="offcanvas-body small text-light d-flex flex-column justify-content-center">
+            <div className="d-flex justify-content-between align-items-center">
+              <div className="p-0">
                 {selectedIndexes.length} taxas selecionadas
               </div>
               <div className="d-flex gap-4">
-                <button type="button" className="btn btn-light text-uppercase">Cancelar</button>
+                <button
+                  type="button"
+                  className="btn btn-light text-uppercase"
+                  onClick={() => bsOffcanvas.hide()}>
+                  Cancelar
+                </button>
                 <button
                   type="button"
                   className="btn btn-primary text-uppercase"
@@ -136,13 +142,15 @@ export default function FormStep10() {
                       type: 'deletedFeesPerLocation',
                       itemIndexes: selectedIndexes
                     });
+                    setSelectedIndex([]);
+                    bsOffcanvas.hide();
                   }}
                 >Eliminar</button>
               </div>
             </div>
           </div>
         </div>
-      </FormGroup>
-    </div>
+      </FormGroup >
+    </div >
   );
 }
