@@ -8,3 +8,7 @@
 .btn-secondary {
   --bs-btn-bg: var(--blue-7);
 }
+
+.offcanvas {
+  height: var(--offcanvas-height) !important;
+}

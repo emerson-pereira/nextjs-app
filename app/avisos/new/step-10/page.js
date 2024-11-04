@@ -120,7 +120,6 @@ export default function FormStep10() {
           id="offcanvasBottom"
           aria-labelledby="offcanvasBottomLabel"
           data-bs-backdrop="static"
-          style={{ height: '15vh !important' }}
         >
           <div className="offcanvas-body small text-light d-flex flex-column justify-content-center">
             <div className="d-flex justify-content-between align-items-center">

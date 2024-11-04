@@ -1,32 +1,49 @@
+"use client"
+
+import { useForm } from "@/app/contexts/formContext";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function StepNav() {
+  const form = useForm();
+
   return (
     <div className="d-flex align-items-center gap-2">
-      <button type="button" className="btn btn-secondary border-0 rounded-5">
-        <Link className="navbar-brand" href="/avisos">
-          <Image
-            src="/chevron-left.svg"
-            width={15}
-            height={15}
-            alt="Previous"
-          />
-        </Link>
-      </button>
-      {/* TODO: Add icon for left chevron */}
-      {/* TODO: Add route nav back/forth */}
-      <p className="text-secondary text-uppercase fw-bold my-0 me-2">Anterior</p>
-      <p className="text-secondary text-uppercase fw-bold my-0 ms-2">Seguinte</p>
-      <button type="button" className="btn btn-secondary border-0 rounded-5">
-        <Link className="navbar-brand" href="/avisos">
+      <button type="button" className="btn btn-flat border-0 d-flex align-items-center gap-2">
+        <div className="btn btn-secondary border-0 rounded-5">
           <Image
             src="/chevron-left.svg"
             width={15}
             height={15}
             alt="Next"
           />
-        </Link>
+        </div>
+        <span
+          className="text-secondary text-uppercase fw-bold my-0 ms-2"
+        >
+          Anterior
+        </span>
+      </button>
+
+      <button
+        type="button"
+        className="btn btn-flat border-0 d-flex align-items-center gap-2"
+        onClick={() => {
+          console.log('Form Data: ', form);
+        }}
+      >
+        <span
+          className="text-secondary text-uppercase fw-bold my-0 ms-2"
+        >
+          Seguinte
+        </span>
+        <div className="btn btn-secondary border-0 rounded-5">
+          <Image
+            src="/chevron-left.svg"
+            width={15}
+            height={15}
+            alt="Next"
+          />
+        </div>
       </button>
     </div>
   )
