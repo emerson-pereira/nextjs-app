@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Frontend App
 
-## Getting Started
+Frontend app to represent a web app layout with:
 
-First, run the development server:
+- Header navigation
+- Side navigation
+- Stepped form filling
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## URL
+
+[https://nextjs-app-coral-five.vercel.app](https://nextjs-app-coral-five.vercel.app)
+
+## Stack
+
+- Javascript library: [React](https://react.dev/)
+- React framework: [Nextjs](https://nextjs.org/)
+- CSS/JS framework: [Bootstrap](https://getbootstrap.com/)
+
+## State management
+
+This app uses [React's context hook](https://react.dev/reference/react/useContext) and [reducer hook](https://react.dev/reference/react/useReducer) to manage state locally leveraging the reducer pattern:
+
+- [app/contexts/formContext.js](./app/contexts/formContext.js)
+
+[See more about React context/reducer pattern](https://react.dev/learn/scaling-up-with-reducer-and-context)
+
+## CSS Theme
+
+CSS Theme is defined using local CSS Variables and orriding's Boostrap CSS Variables:
+
+- App theme: [app/page.module.css](./app/page.module.css) and [app/globals.css](./app/globals.css)
+- CSS override: [app/bootstrap-theme.css](./app/bootstrap-theme.css)
+
+## Routes
+
+In Next.js routing is folder based.
+
+[See more about Next.js routing](https://nextjs.org/docs/app/building-your-application/routing)
+
+## Components
+
+Components are made with a pure logic, meant to be reused and have no side-effects (Single Responsability):
+
+- [components](./components)
+
+## Local development
+
+- [Node.js](https://nodejs.org/en) version: 18+
+- [NPM](https://www.npmjs.com/) version: 9+
+
+### Install dependencies
+
+```
+npm i
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Run app
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Local URL
 
-## Learn More
+[http://localhost:3000](http://localhost:3000)
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
